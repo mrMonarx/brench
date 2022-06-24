@@ -5,6 +5,13 @@ Database
 {% endblock %}
 
 {% block content %}
-    <h1>{{ title }} - id: {{ id }}</h1>
-    <p>{{ content }}</p>
+    {% for object in objects %}
+        <h1>{{ object.title }} - id: {{ object.id }}</h1>
+        <p>{{ object.content }}</p>
+    {% endfor %}
+    <ul>
+        {% for item in my_list %}
+            <h1><li>{{ item }}</li></h1>
+        {% endfor %}
+    </ul>
 {% endblock %}
