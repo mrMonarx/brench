@@ -1,8 +1,26 @@
 from django.http import HttpResponse
+from django.utils import timezone
+from random import randint
 
-Home_Web_View = """Python is the best programming language"""
+from articles.models import Article
+from django.template.loader import render_to_string
 
 
 def home(request):
-    print(Home_Web_View)
-    return HttpResponse(Home_Web_View)
+    name = 'Django'
+    number = randint(1,3)
+    date = timezone.now()
+    # database =
+    obj = Article.objects.get(id=number)
+    # title = obj.title
+    # content = obj.content
+
+    content = {'title': obj.title,
+               'id': obj.id,
+               'content': obj.content}
+
+
+    HTML_STRING = render_to_string(template_name='my_footer.html', context=content)
+    return HttpResponse(HTML_STRING)
+
+
