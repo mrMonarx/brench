@@ -6,6 +6,14 @@
     {% endblock %}</title>
 </head>
 <body>
+<form action="/article/" method="get">
+    <label>
+        <input type="text" name="q">
+    </label>
+    <input type="submit">
+
+</form>
+
     {% block content %}
     {% endblock %}
 
