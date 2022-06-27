@@ -12,7 +12,7 @@ def home(request):
     date = timezone.now()
     # database =
     obj = Article.objects.get(id=number)
-    my_list = ['python','django','flask','django rest api','flask api','c++','c#','go']
+    # my_list = ['python','django','flask','django rest api','flask api','c++','c#','go']
     # title = obj.title
     # content = obj.content
 
@@ -21,7 +21,7 @@ def home(request):
     content = {'title': obj.title,
                'id': obj.id,
                'content': obj.content,
-               'my_list': my_list,
+               # 'my_list': my_list,
                'objects': objects}
 
 
