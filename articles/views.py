@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Article
 
 
@@ -34,3 +34,13 @@ def search_view(request):
     }
 
     return render(request=request, template_name='articles/search.html', context=contect)
+
+def create_view(request):
+    post = request.method
+    if post == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        if title and content:
+            Article.objects.create(title=title,content=content)
+            return redirect(to='http://127.0.0.1:8000/')
+    return render(request=request, template_name='articles/create.html')
