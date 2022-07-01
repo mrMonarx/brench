@@ -17,10 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from articles.views import detail_view,search_view,create_view
 from firstWebPage import views
+
+from accounts.views import login_view,logout_view,register_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
     path('article/<int:id>/', detail_view),
     path('article/', search_view),
-    path('article/create/', create_view)
+    path('article/create/', create_view),
+    path('login/', login_view),
+    path('logout/', logout_view),
+    path('register/', register_view)
 ]
