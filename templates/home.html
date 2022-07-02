@@ -2,7 +2,7 @@
 
 {% block title %}
 Database
-{% endblock %}
+{% endblock title %}
 
 {% block content %}
 <form action="/article/" method="get">
@@ -12,6 +12,11 @@ Database
     <input type="submit">
 
 </form>
+<button style="justify-content: right;
+    align-items: center;
+    margin-left: 50%;
+    margin: 10px;"><a href="/login">LogIn</a></button>
+<button><a href="/register">SignUp</a></button>
 {% for object in objects %}
 <h1><a href="article/{{object.id}}/"> {{ object.title }} - id: {{ object.id }} {{ object.content }}</a></h1>
 <p></p>
@@ -22,4 +27,4 @@ Database
         <button>Add</button>
     </a>
 </div>
-{% endblock %}
+{% endblock content%}
