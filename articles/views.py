@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Article
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -35,6 +36,7 @@ def search_view(request):
 
     return render(request=request, template_name='articles/search.html', context=contect)
 
+@login_required
 def create_view(request):
     post = request.method
     if post == 'POST':
