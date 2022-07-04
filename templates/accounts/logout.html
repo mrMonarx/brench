@@ -2,8 +2,16 @@
 
 {% block title %}
     Logout
-{% endblock title %}
+{% endblock %}
 
 {% block content %}
-    <h1>Logout</h1>
-{% endblock content %}
+    {% if request.user.is_authenticated %}
+        <form action="/logout/" method="POST">{% csrf_token %}
+            <p>Are you logout?</p>
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        Are you logged in
+        <a href="/login/">Login</a>
+    {% endif %}
+{% endblock %}

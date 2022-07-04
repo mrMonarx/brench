@@ -1,9 +1,99 @@
 {% extends 'base.html' %}
-
+{% block style %}
 {% block title %}
-    Register
-{% endblock %}
 
+{% endblock title %}
+<style>
+
+body{
+    background-color: #344a72;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+ .singup-box{
+    width: 360px;
+    height: 620px;
+    margin: auto;
+    background-color: white;
+    border-radius: 3px;
+    text-align: center;
+ }
+ h1{
+    text-align: center;
+    padding-top: 15px;
+ }
+ h4{
+    text-align: center;
+ }
+ form{
+    width: 300px;
+    margin-left: 20px;
+ }
+ form label{
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+ }
+ form input{
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+ }
+
+ input[type="button"]{
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #49c1a2;
+    color: white;
+    font-size: 18px;
+ }
+ p{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+ }
+
+ .para-2{
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    margin-top: -10px;
+ }
+
+ .para-2 a{
+    color: #49c1a2;
+ }
+</style>
+{% endblock style %}
 {% block content %}
-    <h1>Register</h1>
-{% endblock %}
+    <div class="signup-box">
+        <h1>Sing Up</h1>
+            <form>
+               <label title="fname">First Name</label>
+               <input type="text" name="firstname" title="fname">
+               <label>Last Name</label>
+               <input type="text" name="lastname">
+               <label>Email</label>
+               <input type="email" name="email">
+               <label>Password</label>
+               <input type="password" name="password">
+               <label>Confirm Password</label>
+               <input type="password" name="confirm_password">
+               <input type="submit">
+           </form>
+        <p>By clicking the SingUp button, you agree to our <br>
+        <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
+        </p>
+    </div>
+    <p class="para-2">Already have an account? <a href="/login">Login</a></p>
+
+{% endblock content %}

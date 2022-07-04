@@ -109,30 +109,33 @@ input[type="submit"]:hover{
 {% endblock style %}
 
 {% block content %}
-    {% if not error %}
-    <div class="center">
-        <h1>Login</h1>
-        <form action="/login/" method="POST">
-            {% csrf_token %}
-            <div class="txt_field">
-                <input class="txt_field-input" type="text" name="username" required>
-                <span></span>
-                <label>Username</label>
+    {% if not request.user.is_authenticated %}
+            <div class="center">
+                <h1>Login</h1>
+                <form action="/login/" method="POST">
+                {% csrf_token %}
+                    {% if error %}
+                        <p>Warning:{{ error }}</p>
+                    {% endif %}
+                    <div class="txt_field">
+                        <input class="txt_field-input" type="text" name="username" required>
+                            <span></span>
+                        <label>Username</label>
+                    </div>
+                    <div class="txt_field">
+                        <input class="txt_field-input" type="password" name="password" required>
+                        <span></span>
+                        <label>Password</label>
+                    </div>
+                    <div class="pass">Forgot Password</div>
+                    <input type="submit">
+                    <div class="signup_link">
+                        Not a member? <a href="/register">SignUp</a>
+                    </div>
+                </form>
             </div>
-            <div class="txt_field">
-                <input class="txt_field-input" type="password" name="password" required>
-                <span></span>
-                <label>Password</label>
-            </div>
-            <div class="pass">Forgot Password</div>
-            <input type="submit">
-            <div class="signup_link">
-                Not a member? <a href="/register">SignUp</a>
-            </div>
-        </form>
-    </div>
     {% else %}
-        {{ error }}
+        <p>You are already logged in. <a href="/logout">Logout</a></p>
     {% endif %}
 
 {% endblock content %}
