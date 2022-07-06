@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Article
 from django.contrib.auth.decorators import login_required
-
+from .forms import ArticleForm
 
 # Create your views here.
 
@@ -37,12 +37,29 @@ def search_view(request):
     return render(request=request, template_name='articles/search.html', context=contect)
 
 @login_required
+def create_view_old(request):
+    form = ArticleForm(request.POST or None)
+    context = {
+        'form': form
+    }
+
+    if form.is_valid():
+        title = form.cleaned_data.get('title')
+        content = form.cleaned_data.get('content')
+        print(title,content)
+        Article.objects.create(title=title, content=content)
+        context['form'] = ArticleForm()
+        return redirect(to='/')
+    return render(request=request, template_name='articles/create.html', context=context)
+
+@login_required
 def create_view(request):
-    post = request.method
-    if post == 'POST':
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        if title and content:
-            Article.objects.create(title=title,content=content)
-            return redirect(to='http://127.0.0.1:8000/')
-    return render(request=request, template_name='articles/create.html')
+    form = ArticleForm(request.POST or None)
+    context = {
+        'form':form
+    }
+    if form.is_valid():
+        form.save()
+        context['form'] = ArticleForm()
+        return redirect(to='/')
+    return render(request=request, template_name='articles/create.html', context=context)

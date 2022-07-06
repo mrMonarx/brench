@@ -16,7 +16,7 @@ def home(request):
     # title = obj.title
     # content = obj.content
 
-    objects = Article.objects.all()
+    objects = Article.objects.all()[::-1]
 
     content = {'title': obj.title,
                'id': obj.id,

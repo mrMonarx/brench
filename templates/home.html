@@ -17,14 +17,15 @@ Database
     margin-left: 50%;
     margin: 10px;"><a href="/login">LogIn</a></button>
 <button><a href="/register">SignUp</a></button>
+ <a href="/article/create/">
+        <button>Add</button>
+    </a>
 {% for object in objects %}
 <h1><a href="article/{{object.id}}/"> {{ object.title }} - id: {{ object.id }} {{ object.content }}</a></h1>
 <p></p>
 {% endfor %}
 <div style="margin-top: 10px">
 
-    <a href="/article/create/">
-        <button>Add</button>
-    </a>
+
 </div>
 {% endblock content%}
