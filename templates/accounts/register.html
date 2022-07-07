@@ -77,19 +77,12 @@ body{
 {% block content %}
     <div class="signup-box">
         <h1>Sing Up</h1>
-            <form>
-               <label title="fname">First Name</label>
-               <input type="text" name="firstname" title="fname">
-               <label>Last Name</label>
-               <input type="text" name="lastname">
-               <label>Email</label>
-               <input type="email" name="email">
-               <label>Password</label>
-               <input type="password" name="password">
-               <label>Confirm Password</label>
-               <input type="password" name="confirm_password">
-               <input type="submit">
-           </form>
+            <form action="/register/" method="POST">
+                {% csrf_token %}
+                {{ register_form.as_p }}
+                <button type="submit">Register</button>
+                <p>Are you have a acount? <a href="/login/">Login</a></p>
+            </form>
         <p>By clicking the SingUp button, you agree to our <br>
         <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
         </p>
