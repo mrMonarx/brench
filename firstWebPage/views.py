@@ -1,11 +1,11 @@
 from django.http import HttpResponse
 from django.utils import timezone
 from random import randint
-
+from django.contrib.auth.decorators import login_required
 from articles.models import Article
 from django.template.loader import render_to_string
 
-
+@login_required
 def home(request):
     name = 'Django'
     number = randint(1,3)
